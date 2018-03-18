@@ -1,0 +1,23 @@
+.my-form {
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.main-div{
+  height: 100vh;
+  display: flow;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-card {
+  width: 240px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
