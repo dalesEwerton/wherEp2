@@ -3,15 +3,15 @@
     <div class="title">
       <h1>Wher<b>EP</b></h1>
     </div>
-    <form class="my-form">
+    <form class="my-form" (submit)="login($event)">
       <mat-form-field class="full-width">
-        <input matInput placeholder="Login" >
+        <input matInput placeholder="Login" required autofocus>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput type="password" placeholder="Password">
+        <input matInput type="password" placeholder="Password" required>
       </mat-form-field>
       <div class="btn">
-        <button mat-raised-button color="primary">Login</button><br><br>
+        <button mat-raised-button color="primary" type="submit">Login</button><br><br>
         <button mat-button color="accent">Create Account</button>
       </div>
     </form>

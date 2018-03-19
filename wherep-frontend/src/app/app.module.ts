@@ -18,6 +18,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {SerieService} from './services/serie.service';
 import { ShowSerieComponent } from './components/show-serie/show-serie.component';
 import {FormsModule} from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import {FormsModule} from '@angular/forms';
     MatDialogModule,
     MatSelectModule,
     MatExpansionModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AppRoutingModule
   ],
   providers: [SerieService],
   bootstrap: [AppComponent],

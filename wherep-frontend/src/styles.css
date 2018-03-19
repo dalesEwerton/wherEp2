@@ -2,5 +2,5 @@
 @import '~@angular/material/prebuilt-themes/purple-green.css';
 
 .clara {
-  background: #ADADAD;
+  #background: linear-gradient(#313335, #3c3f41);
 }

@@ -9,11 +9,7 @@ import {SerieService} from '../../services/serie.service';
 })
 export class ShowSerieComponent implements OnInit {
 
-  emojis = ['🐼', '💪', '🐷', '🤖', '👽', '🐥'];
-  choosenEmoji: string;
-
   serieId: string;
-
   serie: any;
 
   constructor(public dialogRef: MatDialogRef<ShowSerieComponent>,
@@ -27,10 +23,6 @@ export class ShowSerieComponent implements OnInit {
 
   }
 
-  confirmSelection() {
-    this.dialogRef.close(this.choosenEmoji);
-  }
-
   getSerie() {
 
     const request = this.serieService.searchSerieById(this.serieId);
@@ -42,7 +34,5 @@ export class ShowSerieComponent implements OnInit {
         console.log(err);
       }
     );
-
   }
-
 }
