@@ -35,4 +35,8 @@ export class ShowSerieComponent implements OnInit {
       }
     );
   }
+
+  addToMySeries() {
+    this.serieService.addSerie(this.serie.Title, this.serieId);
+  }
 }

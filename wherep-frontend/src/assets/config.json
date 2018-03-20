@@ -1,5 +1,6 @@
 {
   "searchApi": "https://omdbapi.com/?apikey=8cf50857&type=series&s=",
   "getByIdApi": "https://omdbapi.com/?apikey=8cf50857&type=series&plot=full&i=",
-  "loginApi": "https://wherep2.herokuapp.com/api/login"
+  "loginApi": "https://wherep2.herokuapp.com/api/login",
+  "serieApi": "https://wherep2.herokuapp.com/api/series"
 }

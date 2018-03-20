@@ -30,7 +30,6 @@ export class UserService {
       .subscribe(
         (responce) => {
           if(responce['status'] === 'SUCCESS') {
-            console.log(responce);
             localStorage.setItem('userId', responce['data']['id']);
             this.isLogedIn = true;
             this.router.navigate(['searchserie']);
