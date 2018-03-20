@@ -2,7 +2,7 @@ module Api
   class SeriesController < ApplicationController
 
     def index
-      series = Serie.order('created_at DESC');
+      series = Serie.order('created_at DESC')
       render json: {status: 'SUCCESS',
                     message: 'Series loaded',
                     data: series},status: :ok
@@ -20,11 +20,12 @@ module Api
       if serie.save
         render json: {status: 'SUCCESS',
                       message: 'Serie Saved',
-                      data: serie}, status: :ok
+                      data: serie,
+                      series: series}, status: :ok
       else
         render json: {status: 'ERROR',
                       message: 'Serie not saved',
-                      data: serie.erros}, status: :unprocessable_entity
+                      data: serie.errors}, status: :unprocessable_entity
       end
     end
 
@@ -45,7 +46,7 @@ module Api
       else
         render json: {status: 'ERROR',
                       message: 'Serie note updated',
-                      data: serie.erros},status: :unprocessable_entity
+                      data: serie.errors},status: :unprocessable_entity
       end
     end
 
@@ -53,7 +54,7 @@ module Api
     private
 
     def serie_params()
-      params.permit(:title, :imdbId)
+      params.permit(:title, :imdbId, :user_id, :series)
     end
   end
 end

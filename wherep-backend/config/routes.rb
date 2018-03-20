@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   namespace 'api' do
     resources :series
+    resources :users
+    post 'login' => 'users#login'
   end
+
+
 
 end

@@ -9,6 +9,7 @@
 50.times do
   Serie.create({
       title:  Faker::Book.title,
-      imdbId: Faker::Lorem.sentence
+      imdbId: Faker::Lorem.sentence,
+      ownner: Faker::Lorem.sentence
                })
 end
