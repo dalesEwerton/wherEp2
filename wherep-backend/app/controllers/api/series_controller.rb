@@ -3,55 +3,54 @@ module Api
 
     def index
       series = Serie.order('created_at DESC')
-      render json: {status: 'SUCCESS',
-                    message: 'Series loaded',
-                    data: series},status: :ok
+      message = 'Series loaded'
+      responce_success(message, series)
     end
 
     def show
       serie = Serie.find(params[ :id])
-      render json: {status: 'SUCCESS',
-                    message: 'Serie loaded',
-                    data: serie}, status: :ok
+      responce_success('Serie loaded', serie)
     end
 
     def create
       serie = Serie.new(serie_params)
       if serie.save
-        render json: {status: 'SUCCESS',
-                      message: 'Serie Saved',
-                      data: serie,
-                      series: series}, status: :ok
+        message = 'Serie Saved'
+        responce_success(message, serie)
       else
-        render json: {status: 'ERROR',
-                      message: 'Serie not saved',
-                      data: serie.errors}, status: :unprocessable_entity
+        message = 'Serie not saved'
+        responce_error(message, serie)
       end
     end
 
     def destroy
       serie = Serie.find(params[ :id])
       serie.destroy
-      render json: {status: 'SUCCESS',
-                    message: 'Serie Deleted',
-                    data: serie}, status: :ok
+      responce_success('Serie Deleted', serie)
     end
 
     def update
       serie = Serie.find(params[ :id])
       if serie.update_attributes(serie_params)
-        render json: {status: 'SUCCESS',
-                      message: 'Serie updated',
-                      data: serie}, status: :ok
+        responce_success('Serie updated', serie)
       else
-        render json: {status: 'ERROR',
-                      message: 'Serie note updated',
-                      data: serie.errors},status: :unprocessable_entity
+        responce_error('Serie note updated', serie)
       end
     end
 
 
     private
+    def responce_error(message, serie)
+      render json: {status: 'ERROR',
+                    message: message,
+                    data: serie.errors}, status: :unprocessable_entity
+    end
+
+    def responce_success(message, series)
+      render json: {status: 'SUCCESS',
+                    message: message,
+                    data: series}, status: :ok
+    end
 
     def serie_params()
       params.permit(:title, :imdbId, :user_id, :series)
