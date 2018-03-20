@@ -1,0 +1,35 @@
+<mat-toolbar color="primary">
+  <h1><b>{{serie?.Title}} : {{serie?.Year}}</b></h1>
+  <span class="fill-remaining-space"></span>
+  <button mat-button (click)="dialogRef.close()">X</button>
+</mat-toolbar>
+
+<div class="col">
+  <mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile>
+      <div align="center">
+        <img src="{{serie?.Poster}}">
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div>
+        <p>
+          <b>Plot: </b> {{serie?.Plot}}
+        </p>
+        <p>
+          <b>Genre:</b> {{serie?.Genre}}
+        </p>
+        <p>
+          <b>Actors:</b> {{serie?.Actors}}
+        </p>
+        <p>
+          <b>Total Seasons:</b> {{serie?.totalSeasons}}
+        </p>
+        <p>
+          <b>Imdb Rate: </b> {{serie?.imdbRating}}
+        </p>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+

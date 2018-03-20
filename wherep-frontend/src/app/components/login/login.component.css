@@ -1,0 +1,26 @@
+.my-form {
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.main-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  padding: auto;
+  text-align: right;
+}
+
+.title {
+  color: #69F0AE;
+  text-align: center;
+  font-family: 'Rammetto One', cursive;
+  font-size: 200%;
+}
