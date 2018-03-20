@@ -5,20 +5,22 @@ import {HttpClient} from '@angular/common/http';
 export class SerieService {
 
   idToOpens: string;
-  seriesUrl = 'https://omdbapi.com/?apikey=8cf50857&type=series';
+  config: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.setConfiguration();
+  }
 
 
   searchSeries(search: string) {
 
-    const request = this.http.get(this.seriesUrl + '&s=' + search);
+    const request = this.http.get(this.config['searchApi'] + search);
     return request;
   }
 
   searchSerieById(id: string) {
 
-    const request = this.http.get(this.seriesUrl + '&i=' + id  + '&plot=full');
+    const request = this.http.get(this.config['getByIdApi'] + id );
     return request;
   }
 
@@ -28,5 +30,13 @@ export class SerieService {
 
   getIdToOpen() {
     return this.idToOpens;
+  }
+
+  setConfiguration() {
+    this.http.get('../../assets/config.json')
+      .subscribe(
+        (responce) => {
+          this.config = responce;
+        });
   }
 }

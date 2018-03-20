@@ -20,6 +20,8 @@ import { ShowSerieComponent } from './components/show-serie/show-serie.component
 import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from '@angular/router';
+import {UserService} from './services/user.service';
+import {AuthGuard} from './guards/auth.guard';
 
 
 @NgModule({
@@ -48,7 +50,7 @@ import {RouterModule} from '@angular/router';
     FlexLayoutModule,
     AppRoutingModule
   ],
-  providers: [SerieService],
+  providers: [SerieService, UserService, AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [ShowSerieComponent]
 })

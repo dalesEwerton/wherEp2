@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
@@ -20,11 +21,7 @@ export class LoginComponent implements OnInit {
     const username = e.target.elements[0].value;
     const password = e.target.elements[1].value;
 
-    if (username === 'admin' && password === 'admin') {
-      this.router.navigate(['searchserie']);
-    } else {
-      window.location.reload();
-    }
+    this.userService.login(username, password);
   }
 
 }
