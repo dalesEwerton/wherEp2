@@ -5,9 +5,11 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import {
-  MatButtonModule, MatCardModule, MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatMenuModule,
+  MatAutocompleteModule,
+  MatButtonModule, MatCardModule, MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule,
+  MatMenuModule,
   MatSelect,
-  MatSelectModule, MatSlideToggleModule,
+  MatSelectModule, MatSidenavModule, MatSlideToggleModule,
   MatToolbarModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -19,9 +21,9 @@ import {SerieService} from './services/serie.service';
 import { ShowSerieComponent } from './components/show-serie/show-serie.component';
 import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import {RouterModule} from '@angular/router';
 import {UserService} from './services/user.service';
 import {AuthGuard} from './guards/auth.guard';
+import { SearchSerieComponent } from './components/search-serie/search-serie.component';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import {AuthGuard} from './guards/auth.guard';
     LoginComponent,
     HeaderComponent,
     HomeSeriesComponent,
-    ShowSerieComponent
+    ShowSerieComponent,
+    SearchSerieComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import {AuthGuard} from './guards/auth.guard';
     MatExpansionModule,
     MatSlideToggleModule,
     FlexLayoutModule,
+    MatSidenavModule,
     AppRoutingModule
   ],
   providers: [SerieService, UserService, AuthGuard],

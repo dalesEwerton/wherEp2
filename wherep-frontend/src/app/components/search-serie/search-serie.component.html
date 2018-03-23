@@ -9,13 +9,12 @@
     </mat-card>
   </div><br>
   <mat-grid-list cols="4" rowHeight="1:1.5">
-    <mat-grid-tile *ngFor="let serie of mySeries">
-      <mat-card (click)="openSerie(serie)" class="example-card">
+    <mat-grid-tile *ngFor="let serie of series">
+      <mat-card (click)="openSerie(serie.imdbID)" class="example-card">
         <mat-card-header>
           <mat-card-title>{{serie.Title}}</mat-card-title>
         </mat-card-header>
         <img mat-card-image src="{{serie.Poster}}" width="240" height="340">
-        <br>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>

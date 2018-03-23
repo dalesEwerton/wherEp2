@@ -14,15 +14,18 @@ export class ShowSerieComponent implements OnInit {
   checked: any;
   hasChange: boolean;
   gradeText: string;
+  rols: number;
 
   constructor(public dialogRef: MatDialogRef<ShowSerieComponent>,
               private serieService: SerieService) {
-    this.serie = this.serieService.serieToOpen;
+
+    this.serie = this.serieService.serieToOpen
+    this.setRols();
+    console.log(this.rols);
   }
 
   ngOnInit() {
 
-    console.log(this.serie);
     this.hasChange = false;
     this.setWherEp();
     this.setGradeText();
@@ -96,6 +99,16 @@ export class ShowSerieComponent implements OnInit {
       this.gradeText = 'Qual a sua nota para essa série?';
     }else {
       this.gradeText = 'Reavalie a série';
+    }
+  }
+
+  setRols() {
+    const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+    if (width < 600) {
+      this.rols = 1;
+    } else {
+      this.rols = 2;
     }
   }
 

@@ -1,17 +1,17 @@
-<mat-toolbar color="primary">
-  <h1><b>{{serie?.Title}} : {{serie?.Year}}</b></h1>
+<mat-toolbar class="tolbar" color="primary">
+  <h1><b>{{serie?.Title}}</b></h1>
   <span class="fill-remaining-space"></span>
   <button mat-button (click)="saveSerieChanges()">X</button>
-</mat-toolbar>
+</mat-toolbar><br>
 
 <div class="col">
-  <mat-grid-list cols="2" rowHeight="1:1">
-    <mat-grid-tile>
+  <div class="row">
+    <div class="column">
       <div align="center">
         <img src="{{serie?.Poster}}">
       </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
+    </div>
+    <div class="column">
       <div>
         <p>
           <mat-slide-toggle  ngDefaultControl
@@ -66,8 +66,9 @@
           <button mat-raised-button color="warn" class="btn-circle">Remove</button>
         </div>
       </div>
-    </mat-grid-tile>
-  </mat-grid-list>
+    </div>
+  </div>
 </div>
+
 
 

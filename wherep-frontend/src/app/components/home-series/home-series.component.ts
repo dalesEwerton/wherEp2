@@ -14,27 +14,16 @@ export class HomeSeriesComponent implements OnInit {
   series: any[];
   mySeries: any[];
 
+
+
   constructor(private serieService: SerieService,
               public dialog: MatDialog,
-              public userService: UserService) {}
+              public userService: UserService) {
+
+  }
 
   ngOnInit() {
     this.mySeries = this.userService.userSeries;
-  }
-
-  searchSeries(e) {
-
-   e.preventDefault();
-   const search = e.target.elements[0].value;
-   const request = this.serieService.searchSeries(search);
-
-    request.subscribe(
-      (responce) => {
-        this.series = responce['Search'];
-      }, (err) => {
-        console.log(err);
-      }
-    );
   }
 
   openSerie(serie) {
@@ -42,5 +31,17 @@ export class HomeSeriesComponent implements OnInit {
     this.serieService.setSerieToOpen(serie);
     const dialog = this.dialog.open(ShowSerieComponent);
     dialog.updateSize('90%', '90%');
+  }
+
+  getRols() {
+    const width = window.innerWidth
+      || document.documentElement.clientWidth
+      || document.body.clientWidth;
+
+    if(width < 800) {
+      return 1;
+    } else {
+      return 2;
+    }
   }
 }

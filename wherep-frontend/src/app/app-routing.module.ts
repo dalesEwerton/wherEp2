@@ -4,10 +4,11 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './components/login/login.component';
 import {HomeSeriesComponent} from './components/home-series/home-series.component';
 import {AuthGuard} from './guards/auth.guard';
+import {HeaderComponent} from './components/header/header.component';
 
 const routs: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'searchserie', canActivate: [AuthGuard], component: HomeSeriesComponent}
+  {path: 'searchserie', canActivate: [AuthGuard], component: HeaderComponent}
 ]
 
 @NgModule({
