@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {MatDialogRef} from '@angular/material';
-import {ShowSerieComponent} from '../components/show-serie/show-serie.component';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -10,7 +8,7 @@ const httpOptions = {
 @Injectable()
 export class SerieService {
 
-  idToOpens: string;
+  serieToOpen: any;
   config: any;
 
   constructor (private http: HttpClient) {
@@ -30,12 +28,8 @@ export class SerieService {
     return request;
   }
 
-  setIdToOpen(id: string) {
-    this.idToOpens = id;
-  }
-
-  getIdToOpen() {
-    return this.idToOpens;
+  setSerieToOpen(serie: any) {
+    this.serieToOpen = serie;
   }
 
   setConfiguration() {
@@ -46,12 +40,18 @@ export class SerieService {
         });
   }
 
-  addSerie(Title: string, serieId: string) {
+  addSerie(serie: any) {
 
     const data = JSON.stringify(
       {
-        'title': Title,
-        'imdbId': serieId,
+        'Title': serie.Title,
+        'imdbId': serie.imdbID,
+        'Poster': serie.Poster,
+        'Plot': serie.Plot,
+        'Genre': serie.Genre,
+        'Actors': serie.Actors,
+        'totalSeasons': serie.totalSeasons,
+        'imdbRating': serie.imdbRating,
         'user_id': parseInt(localStorage.getItem('userId'))
       }
     );
@@ -68,5 +68,25 @@ export class SerieService {
           alert(err['error']['message']);
         }
       );
+  }
+
+  updateSerie(serie: any) {
+
+    const url = this.config['serieApi'] + '/' + serie.id;
+    console.log(url);
+    this.http.put(url, JSON.stringify(serie), httpOptions)
+      .subscribe(
+        (responce) => {
+          console.log(responce)
+          if (responce['status'] === 'SUCCESS') {
+            alert(responce['message']);
+          }
+
+        }, (err) => {
+          console.log(err);
+          alert(err['error']['message']);
+        }
+      );
+
   }
 }

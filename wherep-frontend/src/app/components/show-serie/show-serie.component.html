@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   <h1><b>{{serie?.Title}} : {{serie?.Year}}</b></h1>
   <span class="fill-remaining-space"></span>
-  <button mat-button (click)="dialogRef.close()">X</button>
+  <button mat-button (click)="saveSerieChanges()">X</button>
 </mat-toolbar>
 
 <div class="col">
@@ -14,26 +14,60 @@
     <mat-grid-tile>
       <div>
         <p>
-          <b>Plot: </b> {{serie?.Plot}}
+          <mat-slide-toggle  ngDefaultControl
+                             (change)="onEditToogle($event)">Editar</mat-slide-toggle>
         </p>
+          <b>WherEp: </b> {{wherEp}}
+          <div *ngIf="checked">
+              <mat-form-field>
+                <mat-select placeholder="Temporada">
+                  <mat-option (onSelectionChange)="setTemp($event)" *ngFor="let temp of temps"
+                              [value]="temp">{{ temp }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Episodio">
+                  <mat-option (onSelectionChange)="setEp($event)" *ngFor="let ep of eps"
+                              [value]="ep">{{ ep }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+          </div>
         <p>
-          <b>Genre:</b> {{serie?.Genre}}
-        </p>
-        <p>
-          <b>Actors:</b> {{serie?.Actors}}
-        </p>
-        <p>
-          <b>Total Seasons:</b> {{serie?.totalSeasons}}
+          <b>Total Seasons: </b> {{serie?.totalSeasons}}
         </p>
         <p>
           <b>Imdb Rate: </b> {{serie?.imdbRating}}
         </p>
+        <div *ngIf="serie.Grade">
+          <b>You Rate: </b>{{serie.Grade}}
+        </div>
+        <div *ngIf="checked">
+          <div *ngIf="serie.Grade === null">
+            What's your rate for this serie?
+          </div>
+          <mat-form-field>
+            <mat-select placeholder="Nota">
+              <mat-option (onSelectionChange)="setGrade($event)" *ngFor="let g of grades"
+                          [value]="g">{{ g }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div *ngIf="!checked && serie.Comment">
+          <p>
+            <b>Your Notes: </b> {{serie.Comment}}
+          </p>
+        </div>
+        <div *ngIf="checked">
+          <b>Edit your notes for {{serie.Title}}:</b><br>
+          <textarea id="notepad" class="notepad">{{serie.Comment}}</textarea>
+        </div><br><br>
+        <div class="add">
+          <button mat-raised-button color="primary" class="btn-circle">Series Details</button>
+          <button mat-raised-button color="warn" class="btn-circle">Remove</button>
+        </div>
       </div>
     </mat-grid-tile>
   </mat-grid-list>
-  <div class="add">
-    <button mat-raised-button color="primary" (click)="addToMySeries()">Add to My Series</button>
-  </div>
 </div>
 
 

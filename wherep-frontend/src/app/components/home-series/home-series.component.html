@@ -9,8 +9,8 @@
 
 
   <mat-grid-list cols="4" rowHeight="1:1.5">
-    <mat-grid-tile *ngFor="let serie of series">
-      <mat-card (click)="openSerie(serie.imdbID)" class="example-card">
+    <mat-grid-tile *ngFor="let serie of mySeries">
+      <mat-card (click)="openSerie(serie)" class="example-card">
         <mat-card-header>
           <mat-card-title>{{serie.Title}}</mat-card-title>
         </mat-card-header>
@@ -20,4 +20,6 @@
     </mat-grid-tile>
   </mat-grid-list>
 </div>
+
+
 

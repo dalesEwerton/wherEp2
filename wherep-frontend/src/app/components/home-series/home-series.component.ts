@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SerieService} from '../../services/serie.service';
 import {ShowSerieComponent} from '../show-serie/show-serie.component';
 import {MatDialog} from '@angular/material';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-home-series',
@@ -11,12 +12,14 @@ import {MatDialog} from '@angular/material';
 export class HomeSeriesComponent implements OnInit {
 
   series: any[];
-  selectedEmoji: string;
+  mySeries: any[];
 
-  constructor(private serieService: SerieService, public dialog: MatDialog) {}
+  constructor(private serieService: SerieService,
+              public dialog: MatDialog,
+              public userService: UserService) {}
 
   ngOnInit() {
-
+    this.mySeries = this.userService.userSeries;
   }
 
   searchSeries(e) {
@@ -34,10 +37,10 @@ export class HomeSeriesComponent implements OnInit {
     );
   }
 
-  openSerie(id) {
+  openSerie(serie) {
 
-    this.serieService.setIdToOpen(id);
+    this.serieService.setSerieToOpen(serie);
     const dialog = this.dialog.open(ShowSerieComponent);
-    dialog.updateSize('90%', '90%')
+    dialog.updateSize('90%', '90%');
   }
 }

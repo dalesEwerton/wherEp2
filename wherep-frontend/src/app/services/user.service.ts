@@ -11,6 +11,7 @@ export class UserService {
 
   config: any;
   isLogedIn: boolean
+  userSeries: any;
 
   constructor(private router: Router, private http: HttpClient) {
     this.setConfiguration();
@@ -32,6 +33,8 @@ export class UserService {
           if(responce['status'] === 'SUCCESS') {
             localStorage.setItem('userId', responce['data']['id']);
             this.isLogedIn = true;
+            this.userSeries = responce['series'];
+            console.log(this.userSeries);
             this.router.navigate(['searchserie']);
           }
 

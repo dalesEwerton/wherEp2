@@ -9,34 +9,98 @@ import {SerieService} from '../../services/serie.service';
 })
 export class ShowSerieComponent implements OnInit {
 
-  serieId: string;
   serie: any;
+  wherEp: any;
+  checked: any;
+  hasChange: boolean;
+  gradeText: string;
 
   constructor(public dialogRef: MatDialogRef<ShowSerieComponent>,
               private serieService: SerieService) {
-
-    this.serieId = this.serieService.getIdToOpen();
-    this.getSerie();
+    this.serie = this.serieService.serieToOpen;
   }
 
   ngOnInit() {
 
-  }
-
-  getSerie() {
-
-    const request = this.serieService.searchSerieById(this.serieId);
-
-    request.subscribe(
-      (responce) => {
-        this.serie = responce;
-      }, (err) => {
-        console.log(err);
-      }
-    );
+    console.log(this.serie);
+    this.hasChange = false;
+    this.setWherEp();
+    this.setGradeText();
   }
 
   addToMySeries() {
-    this.serieService.addSerie(this.serie.Title, this.serieId);
+    this.serieService.addSerie(this.serie);
   }
+
+  setWherEp() {
+
+    if (this.serie['Episode'] === null || this.serie['Season'] === null) {
+
+      this.wherEp = 'Você não registrou o seu progresso na série.';
+
+    } else {
+
+      this.wherEp = 'Você está no episódio ' + this.serie['Episode'] +
+        ' da ' + this.serie['Season'] + 'ª temporada.';
+
+    }
+  }
+
+  onEditToogle(e) {
+
+    if (this.checked) {
+      const atualComment = document.getElementById('notepad')['value'];
+
+      if(atualComment !== this.serie.Comment) {
+        this.serie.Comment = atualComment;
+        this.hasChange = true;
+      }
+    }
+
+    this.checked = e.checked;
+    this.setWherEp();
+  }
+
+  setTemp(e) {
+    if (e.isUserInput === true) {
+      this.serie.Season = e.valueOf().source.value;
+      this.hasChange = true;
+    }
+  }
+
+  setEp(e) {
+    if (e.isUserInput === true) {
+      this.serie.Episode = e.valueOf().source.value;
+      this.hasChange = true;
+    }
+  }
+
+  setGrade(e) {
+    if (e.isUserInput === true) {
+      this.serie.Grade = e.valueOf().source.value;
+      this.hasChange = true;
+      this.setGradeText();
+    }
+  }
+
+  saveSerieChanges() {
+    if (this.hasChange) {
+      this.serieService.updateSerie(this.serie);
+    }
+    this.dialogRef.close();
+  }
+
+  private setGradeText() {
+
+    if (this.serie.Grade == null) {
+      this.gradeText = 'Qual a sua nota para essa série?';
+    }else {
+      this.gradeText = 'Reavalie a série';
+    }
+  }
+
+  grades = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  temps = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+  eps = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 35, 37, 38, 39, 40];
+
 }

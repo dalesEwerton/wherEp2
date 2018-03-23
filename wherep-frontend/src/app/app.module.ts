@@ -7,7 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import {
   MatButtonModule, MatCardModule, MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatMenuModule,
   MatSelect,
-  MatSelectModule,
+  MatSelectModule, MatSlideToggleModule,
   MatToolbarModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -47,6 +47,7 @@ import {AuthGuard} from './guards/auth.guard';
     MatDialogModule,
     MatSelectModule,
     MatExpansionModule,
+    MatSlideToggleModule,
     FlexLayoutModule,
     AppRoutingModule
   ],
