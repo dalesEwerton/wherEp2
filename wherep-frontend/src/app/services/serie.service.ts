@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -11,7 +12,7 @@ export class SerieService {
   serieToOpen: any;
   config: any;
 
-  constructor (private http: HttpClient) {
+  constructor (private http: HttpClient, private router: Router) {
     this.setConfiguration();
   }
 
@@ -22,10 +23,18 @@ export class SerieService {
     return request;
   }
 
-  searchSerieById(id: string) {
+  openSerieDetails(id: string) {
 
-    const request = this.http.get(this.config['getByIdApi'] + id );
-    return request;
+    this.http.get(this.config['getByIdApi'] + id )
+      .subscribe(
+        (responce) => {
+          this.serieToOpen = responce;
+          this.router.navigate(['seriesdetail']);
+        }, (err) => {
+          console.log(err);
+          alert(err['error']['message']);
+        }
+      );
   }
 
   setSerieToOpen(serie: any) {

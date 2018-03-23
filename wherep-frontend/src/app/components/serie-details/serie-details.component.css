@@ -1,0 +1,10 @@
+.serieContainer {
+  display: flow;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #171717;
+  background-image: url("https://pre00.deviantart.net/3601/th/pre/i/2006/220/d/2/grungy_paper_v_6___or_sumtin___by_bashcorpo.jpg");
+  background-position: center;
+}
+

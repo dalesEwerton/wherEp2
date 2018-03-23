@@ -31,7 +31,7 @@ export class SearchSerieComponent implements OnInit {
   }
 
   openSerie(id: string) {
-    console.log(id);
+    this.serieService.openSerieDetails(id);
   }
 
 }

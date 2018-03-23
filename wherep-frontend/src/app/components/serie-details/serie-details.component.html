@@ -1,0 +1,40 @@
+<div class="serieContainer">
+  <div style="padding: 10px">
+    <br>
+    <h1>
+      <b>{{ serie.Title }} </b> : {{serie.Year}}
+    </h1>
+    <img src="{{serie.Poster}}">
+    <div>
+      <button mat-raised-button color="accent"><b>< Back</b> </button>
+      <button mat-raised-button color="primary"> <b>+ Add to My Series</b> </button>
+    </div>
+    <p>
+      <b>Plot: </b> {{serie.Plot}}
+    </p>
+    <p>
+      <b>Genre: </b> {{serie.Genre}}
+    </p>
+    <p>
+      <b>Total Seasons: </b> {{serie.totalSeasons}}
+    </p>
+    <p>
+      <b>Director: </b> {{serie.Director}}
+    </p>
+    <p>
+      <b>Writer: </b> {{serie.Writer}}
+    </p>
+    <p>
+      <b>Actors: </b> {{serie.Actors}}
+    </p>
+    <p>
+      <b>Awards: </b> {{serie.Awards}}
+    </p>
+    <p>
+      <b>Runtime: </b> {{serie.Runtime}}
+    </p>
+    <p>
+      <b>Imdb Rating: </b> {{serie.imdbRating}}
+    </p>
+  </div>
+</div>

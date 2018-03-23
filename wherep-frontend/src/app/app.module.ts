@@ -24,6 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {UserService} from './services/user.service';
 import {AuthGuard} from './guards/auth.guard';
 import { SearchSerieComponent } from './components/search-serie/search-serie.component';
+import { SerieDetailsComponent } from './components/serie-details/serie-details.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { SearchSerieComponent } from './components/search-serie/search-serie.com
     HeaderComponent,
     HomeSeriesComponent,
     ShowSerieComponent,
-    SearchSerieComponent
+    SearchSerieComponent,
+    SerieDetailsComponent
   ],
   imports: [
     BrowserModule,
