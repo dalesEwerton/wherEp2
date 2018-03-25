@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/purple-green.css';
 
+
 .clara {
-  #background: linear-gradient(#313335, #3c3f41);
   font-family: 'Special Elite', cursive;
+  background: url("assets/images/background.jpg") no-repeat fixed center center;
+  background-size: cover;
 }
 
 body, html{

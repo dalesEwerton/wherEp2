@@ -13,5 +13,14 @@
 
 .example-sidenav {
   padding: 20px;
+  margin-left: -4px;
+}
+
+.menu {
+  cursor: pointer;
+}
+
+a:hover {
+  background-color: rgba(66,66,66,0.3);
 }
 

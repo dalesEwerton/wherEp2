@@ -14,14 +14,11 @@ export class ShowSerieComponent implements OnInit {
   checked: any;
   hasChange: boolean;
   gradeText: string;
-  rols: number;
 
   constructor(public dialogRef: MatDialogRef<ShowSerieComponent>,
               private serieService: SerieService) {
 
     this.serie = this.serieService.serieToOpen
-    this.setRols();
-    console.log(this.rols);
   }
 
   ngOnInit() {
@@ -31,9 +28,6 @@ export class ShowSerieComponent implements OnInit {
     this.setGradeText();
   }
 
-  addToMySeries() {
-    this.serieService.addSerie(this.serie);
-  }
 
   setWherEp() {
 
@@ -102,14 +96,13 @@ export class ShowSerieComponent implements OnInit {
     }
   }
 
-  setRols() {
-    const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  showDetails() {
+    this.dialogRef.close();
+    this.serieService.openSerieDetails(this.serie.imdbId, false);
+  }
 
-    if (width < 600) {
-      this.rols = 1;
-    } else {
-      this.rols = 2;
-    }
+  removeSerie() {
+    this.serieService.removeSerie(this.serie);
   }
 
   grades = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

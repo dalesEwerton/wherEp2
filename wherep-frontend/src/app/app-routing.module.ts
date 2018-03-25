@@ -6,12 +6,16 @@ import {HomeSeriesComponent} from './components/home-series/home-series.componen
 import {AuthGuard} from './guards/auth.guard';
 import {HeaderComponent} from './components/header/header.component';
 import {SerieDetailsComponent} from './components/serie-details/serie-details.component';
+import {CreateAccountComponent} from './components/create-account/create-account.component';
+import {SearchSerieComponent} from './components/search-serie/search-serie.component';
 
 const routs: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'searchserie', canActivate: [AuthGuard], component: HeaderComponent},
-  {path: 'seriesdetail', component: SerieDetailsComponent}
-]
+  {path: 'create', component: CreateAccountComponent},
+  {path: 'searchserie', canActivate: [AuthGuard], component: SearchSerieComponent},
+  {path: 'homeserie', canActivate: [AuthGuard], component: HomeSeriesComponent},
+  {path: 'seriesdetail', canActivate: [AuthGuard], component: SerieDetailsComponent}
+];
 
 @NgModule({
   exports: [

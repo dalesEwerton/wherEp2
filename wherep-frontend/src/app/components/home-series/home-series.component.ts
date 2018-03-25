@@ -3,6 +3,7 @@ import {SerieService} from '../../services/serie.service';
 import {ShowSerieComponent} from '../show-serie/show-serie.component';
 import {MatDialog} from '@angular/material';
 import {UserService} from '../../services/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home-series',
@@ -18,7 +19,8 @@ export class HomeSeriesComponent implements OnInit {
 
   constructor(private serieService: SerieService,
               public dialog: MatDialog,
-              public userService: UserService) {
+              public userService: UserService,
+              private router: Router) {
 
   }
 
@@ -33,15 +35,7 @@ export class HomeSeriesComponent implements OnInit {
     dialog.updateSize('90%', '90%');
   }
 
-  getRols() {
-    const width = window.innerWidth
-      || document.documentElement.clientWidth
-      || document.body.clientWidth;
-
-    if(width < 800) {
-      return 1;
-    } else {
-      return 2;
-    }
+  moveToSearch() {
+    this.router.navigate(['searchserie']);
   }
 }

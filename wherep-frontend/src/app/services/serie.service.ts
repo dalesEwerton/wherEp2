@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {UserService} from './user.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -11,8 +12,12 @@ export class SerieService {
 
   serieToOpen: any;
   config: any;
+  addBtn: boolean;
 
-  constructor (private http: HttpClient, private router: Router) {
+  constructor (private http: HttpClient,
+               private router: Router,
+               private userServivce: UserService) {
+
     this.setConfiguration();
   }
 
@@ -23,7 +28,9 @@ export class SerieService {
     return request;
   }
 
-  openSerieDetails(id: string) {
+  openSerieDetails(id: string, addOption: boolean) {
+
+    this.addBtn = addOption;
 
     this.http.get(this.config['getByIdApi'] + id )
       .subscribe(
@@ -70,6 +77,8 @@ export class SerieService {
         (responce) => {
           if (responce['status'] === 'SUCCESS') {
             alert(responce['message']);
+            this.userServivce.userSeries.push(responce['data']);
+            this.router.navigate(['searchserie']);
           }
 
         }, (err) => {
@@ -86,7 +95,6 @@ export class SerieService {
     this.http.put(url, JSON.stringify(serie), httpOptions)
       .subscribe(
         (responce) => {
-          console.log(responce)
           if (responce['status'] === 'SUCCESS') {
             alert(responce['message']);
           }
@@ -97,5 +105,25 @@ export class SerieService {
         }
       );
 
+  }
+
+  removeSerie(serie: any) {
+
+    if(confirm('Do you wanna remove ' + serie.Title + ' ?')) {
+      const url = this.config['serieApi'] + '/' + serie.id;
+      this.http.delete(url, httpOptions)
+        .subscribe(
+          (responce) => {
+            if (responce['status'] === 'SUCCESS') {
+              alert(responce['message']);
+              this.userServivce.removeSerieLocal(serie.Title);
+            }
+
+          }, (err) => {
+            console.log(err);
+            alert(err['error']['message']);
+          }
+        );
+    }
   }
 }

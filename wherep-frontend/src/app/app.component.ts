@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  logged() {
+    if (localStorage.getItem('userId') === null) {
+      return false;
+    }
+
+    return true;
+  }
 }

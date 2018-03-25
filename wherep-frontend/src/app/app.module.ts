@@ -19,12 +19,13 @@ import { HomeSeriesComponent } from './components/home-series/home-series.compon
 import {HttpClientModule} from '@angular/common/http';
 import {SerieService} from './services/serie.service';
 import { ShowSerieComponent } from './components/show-serie/show-serie.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {UserService} from './services/user.service';
 import {AuthGuard} from './guards/auth.guard';
 import { SearchSerieComponent } from './components/search-serie/search-serie.component';
 import { SerieDetailsComponent } from './components/serie-details/serie-details.component';
+import { CreateAccountComponent } from './components/create-account/create-account.component';
 
 
 @NgModule({
@@ -35,12 +36,14 @@ import { SerieDetailsComponent } from './components/serie-details/serie-details.
     HomeSeriesComponent,
     ShowSerieComponent,
     SearchSerieComponent,
-    SerieDetailsComponent
+    SerieDetailsComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,

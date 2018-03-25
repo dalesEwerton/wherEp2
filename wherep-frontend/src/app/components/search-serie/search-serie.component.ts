@@ -23,7 +23,13 @@ export class SearchSerieComponent implements OnInit {
 
     request.subscribe(
       (responce) => {
-        this.series = responce['Search'];
+        console.log(responce);
+        if (responce['Response'] === 'False'){
+          alert('No results searching for ' + search);
+        } else {
+          this.series = responce['Search'];
+        }
+
       }, (err) => {
         console.log(err);
       }
@@ -31,7 +37,7 @@ export class SearchSerieComponent implements OnInit {
   }
 
   openSerie(id: string) {
-    this.serieService.openSerieDetails(id);
+    this.serieService.openSerieDetails(id, true);
   }
 
 }

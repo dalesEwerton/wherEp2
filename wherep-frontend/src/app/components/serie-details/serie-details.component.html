@@ -6,8 +6,10 @@
     </h1>
     <img src="{{serie.Poster}}">
     <div>
-      <button mat-raised-button color="accent"><b>< Back</b> </button>
-      <button mat-raised-button color="primary"> <b>+ Add to My Series</b> </button>
+      <button mat-raised-button color="accent" (click)="back()"><b>< Back</b> </button>
+
+      <button mat-raised-button color="primary" *ngIf="addBtn"
+              (click)="addToMySeries()"> <b>+ Add to My Series</b> </button>
     </div>
     <p>
       <b>Plot: </b> {{serie.Plot}}

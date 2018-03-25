@@ -9,9 +9,12 @@ import {UserService} from '../../services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) {
+    localStorage.clear();
+  }
 
   ngOnInit() {
+
   }
 
   login(e) {
@@ -22,6 +25,10 @@ export class LoginComponent implements OnInit {
     const password = e.target.elements[1].value;
 
     this.userService.login(username, password);
+  }
+
+  create() {
+    this.router.navigate(['create']);
   }
 
 }

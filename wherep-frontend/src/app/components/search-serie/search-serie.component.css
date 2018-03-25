@@ -7,10 +7,9 @@
   display: flow;
   justify-content: center;
   align-items: center;
-  background-color: #FFFFFF;
 }
 
-.searchComp {
+.home {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,6 +25,11 @@
 
 .example-header-image {
   background-size: cover;
+}
+
+.example-card:hover {
+  width: 500px;
+  height: 420px;
 }
 
 

@@ -7,13 +7,17 @@
   display: flow;
   justify-content: center;
   align-items: center;
-  background-color: #FFFFFF;
+
 }
 
-.searchComp {
-  display: flex;
+.home {
+  text-align: center;
   justify-content: center;
   align-items: center;
+}
+
+.home:hover {
+  background-color: rgba(66,66,66,0.3);
 }
 
 .searchCard {
@@ -22,10 +26,16 @@
 
 .example-card {
   width: 240px;
+  height: 80%;
 }
 
 .example-header-image {
   background-size: cover;
+}
+
+.example-card:hover {
+  width: 500px;
+  height: 420px;
 }
 
 
