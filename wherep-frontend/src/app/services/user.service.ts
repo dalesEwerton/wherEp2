@@ -83,7 +83,7 @@ export class UserService {
 
     for (let i = 0; i < this.userSeries.length; i++) {
       if (this.userSeries[i].Title === title) {
-        this.userSeries.splice(i);
+        this.userSeries.splice(i, 1);
         break;
       }
     }
