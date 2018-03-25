@@ -9,6 +9,8 @@ import {UserService} from '../../services/user.service';
 })
 export class LoginComponent implements OnInit {
 
+  create = false;
+
   constructor(private userService: UserService, private router: Router) {
     localStorage.clear();
   }
@@ -27,8 +29,8 @@ export class LoginComponent implements OnInit {
     this.userService.login(username, password);
   }
 
-  create() {
-    this.router.navigate(['create']);
+  createUser() {
+    this.create = true;
   }
 
 }

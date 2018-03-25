@@ -20,13 +20,9 @@
   background-color: rgba(66,66,66,0.3);
 }
 
-.searchCard {
-  width: 50%;
-}
-
 .example-card {
-  width: 240px;
-  height: 80%;
+  width: 83%;
+  height: 85%;
 }
 
 .example-header-image {
@@ -34,8 +30,34 @@
 }
 
 .example-card:hover {
-  width: 500px;
-  height: 420px;
+  background-color: #551773;
+}
+
+.column {
+  float: left;
+  width: 23%;
+  padding-bottom: 3%;
+  padding-left: 1.8%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 920px) {
+  .column {
+    width: 47%;
+  }
+
+}
+
+@media screen and (max-width: 450px) {
+  .column {
+    width: 105%;
+  }
 }
 
 

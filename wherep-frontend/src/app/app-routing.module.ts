@@ -14,7 +14,8 @@ const routs: Routes = [
   {path: 'create', component: CreateAccountComponent},
   {path: 'searchserie', canActivate: [AuthGuard], component: SearchSerieComponent},
   {path: 'homeserie', canActivate: [AuthGuard], component: HomeSeriesComponent},
-  {path: 'seriesdetail', canActivate: [AuthGuard], component: SerieDetailsComponent}
+  {path: 'seriesdetail', canActivate: [AuthGuard], component: SerieDetailsComponent},
+  {path: '**', component: LoginComponent}
 ];
 
 @NgModule({

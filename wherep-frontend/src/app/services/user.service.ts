@@ -70,7 +70,7 @@ export class UserService {
         (responce) => {
           if (responce['status'] === 'SUCCESS') {
             alert('Successful registration');
-            this.router.navigate(['']);
+            window.location.reload();
           }
         }, (err) => {
           console.log(err);

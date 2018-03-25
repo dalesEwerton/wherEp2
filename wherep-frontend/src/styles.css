@@ -4,8 +4,7 @@
 
 .clara {
   font-family: 'Special Elite', cursive;
-  background: url("assets/images/background.jpg") no-repeat fixed center center;
-  background-size: cover;
+  background: #303030;
 }
 
 body, html{

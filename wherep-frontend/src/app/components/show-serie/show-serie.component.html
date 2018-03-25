@@ -46,7 +46,7 @@
             What's your rate for this serie?
           </div>
           <mat-form-field>
-            <mat-select placeholder="Nota">
+            <mat-select class="mat-typography" placeholder="Nota">
               <mat-option (onSelectionChange)="setGrade($event)" *ngFor="let g of grades"
                           [value]="g">{{ g }}</mat-option>
             </mat-select>

@@ -61,4 +61,8 @@ export class CreateAccountComponent implements OnInit {
       this.userService.createUser(username, email, password);
     }
   }
+
+  backToLogin() {
+    window.location.reload();
+  }
 }

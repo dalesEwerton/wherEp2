@@ -4,17 +4,17 @@
   <br><h2 style="color: black">You have no Series, click here to add</h2>
 </div>
 
-<div class="main-div"><br>
-  <mat-grid-list cols="4" rowHeight="1:1.5">
-    <mat-grid-tile *ngFor="let serie of mySeries">
+<div ><br>
+  <div class="row">
+    <div class="column" *ngFor="let serie of mySeries">
       <mat-card (click)="openSerie(serie)" class="example-card">
         <mat-card-header>
           <mat-card-title>{{serie.Title}}</mat-card-title>
         </mat-card-header>
         <img mat-card-image src="{{serie.Poster}}" width="240" height="340">
       </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+    </div>
+  </div>
 </div>
 
 
