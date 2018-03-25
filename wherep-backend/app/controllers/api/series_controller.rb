@@ -53,7 +53,9 @@ module Api
     end
 
     def serie_params()
-      params.permit(:title, :imdbId, :user_id, :series)
+      params.permit(:Title, :imdbId, :Poster, :Plot, :Genre,
+                    :Actors, :totalSeasons, :imdbRating, :Grade, :Season,
+                    :Episode, :Comment, :user_id)
     end
   end
 end

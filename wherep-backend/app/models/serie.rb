@@ -2,6 +2,6 @@ class Serie < ApplicationRecord
 
   belongs_to :user
 
-  validates :title, presence: true
+  validates :Title, presence: true
   validates :imdbId, presence: true
 end
