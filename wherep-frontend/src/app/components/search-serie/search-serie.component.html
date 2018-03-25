@@ -1,0 +1,27 @@
+<div>
+  <br><div class="home">
+    <mat-card class="searchCard">
+      <form (submit)="searchSeries($event)">
+        <mat-form-field class="my-form">
+          <input matInput placeholder="Search">
+          <mat-hint>Press Enter to Search...</mat-hint>
+        </mat-form-field>
+      </form>
+    </mat-card>
+  </div>
+</div><br>
+
+<div class="row">
+  <div class="column" *ngFor="let serie of series">
+    <mat-card (click)="openSerie(serie.imdbID)" class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{serie.Title}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{serie.Poster}}" width="240" height="340">
+    </mat-card>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,33 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-toolbar id="tolbar" color="primary">
+
+    <a id="menu" class="menu"(click)="drawer.toggle()">
+      <img src="../../assets/icons/menu.png" width="3%" >
+      Wher<b>Ep</b>
+    </a>
+    <!-- This fills the remaining space of the current row -->
+    <span class="fill-remaining-space"></span>
+    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <button mat-button (click)="logout()">
+        <b>Logout </b> <img height="30px" src="../../assets/icons/logout.png">
+      </button>
+    </div>
+    <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+      Menu
+    </button>
+
+  </mat-toolbar>
+
+  <mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item >Loggout</button>
+    <!--<button mat-menu-item>Help</button>-->
+  </mat-menu>
+  <mat-drawer #drawer class="example-sidenav" mode="side" >
+    <button mat-button (click)="drawer.toggle()"><h3>Main Menu</h3></button><br>
+    <button mat-button (click)="activeSeries(); drawer.toggle();">My Series &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></button><br>
+    <button mat-button (click)="activeSearch(); drawer.toggle();">Add Series &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></button>
+  </mat-drawer>
+  <router-outlet></router-outlet>
+</mat-drawer-container>
+
+

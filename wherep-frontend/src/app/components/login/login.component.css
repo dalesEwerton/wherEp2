@@ -1,0 +1,30 @@
+.my-form {
+  width: 100%;
+}
+
+.search-bar {
+  width: 100%;
+}
+
+.main-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: .95;
+  background: url("../../../assets/images/background.jpg") no-repeat fixed center center;
+  background-size: cover;
+}
+
+
+.btn {
+  padding: auto;
+  text-align: right;
+}
+
+.title {
+  color: #69F0AE;
+  text-align: center;
+  font-family: 'Rammetto One', cursive;
+  font-size: 200%;
+}

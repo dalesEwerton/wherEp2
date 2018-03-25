@@ -1,0 +1,58 @@
+<div class="main-div">
+  <mat-card>
+    <div class="title">
+      <h1>Create Account</h1>
+    </div>
+    <form class="my-form" (submit)="create($event)">
+      <mat-form-field class="search-bar">
+        <input matInput type="email" placeholder="Email" [formControl]="emailFormControl"
+               [errorStateMatcher]="matcher">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="search-bar">
+        <input matInput placeholder="Username" [formControl]="loginFormControl"
+               [errorStateMatcher]="matcher">
+        <mat-error *ngIf="loginFormControl.hasError('required')">
+          Username is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="loginFormControl.hasError('minlength')">
+          Username must be at least <strong>4</strong> characters
+        </mat-error>
+        <mat-error *ngIf="loginFormControl.hasError('maxlength')">
+          Username must be maximum <strong>10</strong> characters
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="search-bar">
+        <input matInput type="password" placeholder="Password" [formControl]="passwordFormControl"
+               [errorStateMatcher]="matcher">
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="passwordFormControl.hasError('minlength')">
+          Passoword must be at least <strong>6</strong> characters
+        </mat-error>
+        <mat-error *ngIf="passwordFormControl.hasError('maxlength')">
+          Password must be maximum <strong>16</strong> characters
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="search-bar">
+        <input matInput type="password" placeholder="Confirm Password" [formControl]="passwordFormControl"
+               [errorStateMatcher]="matcher">
+        <mat-error *ngIf="true">
+          Passwords doesn't match
+        </mat-error>
+      </mat-form-field>
+      <div class="btn">
+        <button mat-raised-button color="primary" type="submit">Create</button><br><br>
+      </div>
+    </form>
+    <div class="btn">
+      <button mat-button color="accent" (click)="backToLogin()">Already have an account? Login</button>
+    </div>
+  </mat-card>
+</div>

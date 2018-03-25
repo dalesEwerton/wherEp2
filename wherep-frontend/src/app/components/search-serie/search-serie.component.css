@@ -1,0 +1,61 @@
+.my-form {
+  width: 100%;
+}
+
+.main-div{
+  height: 100vh;
+  display: flow;
+  justify-content: center;
+  align-items: center;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchCard {
+  width: 50%;
+}
+
+.example-card {
+  width: 83%;
+  height: 85%;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+
+.example-card:hover {
+  background-color: #551773;
+}
+
+
+.column {
+  float: left;
+  width: 23%;
+  padding-bottom: 3%;
+  padding-left: 1.8%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 920px) {
+  .column {
+    width: 47%;
+  }
+
+}
+
+@media screen and (max-width: 450px) {
+  .column {
+    width: 105%;
+  }
+}

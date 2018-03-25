@@ -1,0 +1,25 @@
+<div class="main-div" *ngIf="!create">
+  <mat-card>
+    <div class="title">
+      <h1 class="mat-display-1l">Wher<b>EP</b></h1>
+    </div>
+    <form class="my-form" (submit)="login($event)">
+      <mat-form-field class="search-bar">
+        <input matInput placeholder="Login" required autofocus>
+      </mat-form-field>
+      <mat-form-field class="search-bar">
+        <input matInput type="password" placeholder="Password" required>
+      </mat-form-field>
+      <div class="btn">
+        <button mat-raised-button color="primary" type="submit">Login</button><br><br>
+      </div>
+    </form>
+    <div class="btn">
+      <button mat-button color="accent" (click)="createUser()">Create Account</button>
+    </div>
+  </mat-card>
+</div>
+
+<div *ngIf="create">
+  <app-create-account></app-create-account>
+</div>
