@@ -14,7 +14,7 @@ export class SearchSerieComponent implements OnInit {
 
   constructor(private serieService: SerieService) {
     this.series = mostPopularsDAO;
-    console.log(this.series);
+    this.sortByName();
   }
 
   ngOnInit() {
@@ -33,6 +33,7 @@ export class SearchSerieComponent implements OnInit {
           alert('No results searching for ' + search);
         } else {
           this.series = responce['Search'];
+          this.sortByName();
         }
 
       }, (err) => {
@@ -43,6 +44,11 @@ export class SearchSerieComponent implements OnInit {
 
   openSerie(id: string) {
     this.serieService.openSerieDetails(id, true);
+  }
+
+
+  sortByName() {
+    this.series = this.series.sort((one, two) => (one.Title > two.Title ? -1 : 1));
   }
 }
 
