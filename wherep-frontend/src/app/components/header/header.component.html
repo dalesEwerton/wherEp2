@@ -2,9 +2,9 @@
   <mat-toolbar id="tolbar" color="primary">
 
     <a id="menu" class="menu"(click)="drawer.toggle()">
-      <img src="../../assets/icons/menu.png" width="3%" >
-      Wher<b>Ep</b>
+      <i class="fa fa-bars"></i><span> Wher<b>Ep</b></span>
     </a>
+
     <!-- This fills the remaining space of the current row -->
     <span class="fill-remaining-space"></span>
     <div fxLayout="row" fxShow="false" fxShow.gt-sm>
@@ -29,5 +29,3 @@
   </mat-drawer>
   <router-outlet></router-outlet>
 </mat-drawer-container>
-
-
