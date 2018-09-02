@@ -15,13 +15,14 @@
       <div>
         <p>
           <mat-slide-toggle  ngDefaultControl
-                             (change)="onEditToogle($event)">Editar</mat-slide-toggle>
+                             (change)="onEditToogle($event)">Edit</mat-slide-toggle>
         </p>
           <b>WherEp: </b> {{wherEp}}
           <div *ngIf="checked">
               <mat-form-field>
                 <mat-select placeholder="Temporada">
-                  <mat-option (onSelectionChange)="setTemp($event)" *ngFor="let temp of temps"
+                  <mat-option (onSelectionChange)="setTemp($event)"
+                  *ngFor="let temp of getTemp()"
                               [value]="temp">{{ temp }}</mat-option>
                 </mat-select>
               </mat-form-field>
@@ -64,11 +65,8 @@
         <div class="add">
           <button mat-raised-button color="primary" (click)="showDetails()" class="btn-circle">Series Details</button>
           <button mat-raised-button color="warn" (click)="removeSerie(); dialogRef.close()" class="btn-circle">Remove</button>
-        </div>
+        </div><br>
       </div>
     </div>
   </div>
 </div>
-
-
-

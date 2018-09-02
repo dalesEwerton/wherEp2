@@ -14,11 +14,13 @@ export class ShowSerieComponent implements OnInit {
   checked: any;
   hasChange: boolean;
   gradeText: string;
+  tempsCount: number;
 
   constructor(public dialogRef: MatDialogRef<ShowSerieComponent>,
               private serieService: SerieService) {
 
     this.serie = this.serieService.serieToOpen
+    this.tempsCount = parseInt(this.serie['totalSeasons']);
   }
 
   ngOnInit() {
@@ -33,12 +35,12 @@ export class ShowSerieComponent implements OnInit {
 
     if (this.serie['Episode'] === null || this.serie['Season'] === null) {
 
-      this.wherEp = 'Você não registrou o seu progresso na série.';
+      this.wherEp = 'You did not record your progress in the series.';
 
     } else {
 
-      this.wherEp = 'Você está no episódio ' + this.serie['Episode'] +
-        ' da ' + this.serie['Season'] + 'ª temporada.';
+      this.wherEp = 'You are in episode ' + this.serie['Episode'] +
+        ' of season ' + this.serie['Season'];
 
     }
   }
@@ -56,6 +58,7 @@ export class ShowSerieComponent implements OnInit {
 
     this.checked = e.checked;
     this.setWherEp();
+    this.saveSerieChangesWithoutClose();
   }
 
   setTemp(e) {
@@ -83,8 +86,16 @@ export class ShowSerieComponent implements OnInit {
   saveSerieChanges() {
     if (this.hasChange) {
       this.serieService.updateSerie(this.serie);
+      this.hasChange = false;
     }
     this.dialogRef.close();
+  }
+
+  saveSerieChangesWithoutClose() {
+    if (this.hasChange) {
+      this.serieService.updateSerie(this.serie);
+      this.hasChange = false;
+    }
   }
 
   private setGradeText() {
@@ -103,6 +114,14 @@ export class ShowSerieComponent implements OnInit {
 
   removeSerie() {
     this.serieService.removeSerie(this.serie);
+  }
+
+  getTemp() {
+    let arr = [];
+    for(let i = 1; i <  this.tempsCount + 1 ; i++) {
+      arr.push(i);
+    }
+    return arr;
   }
 
   grades = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

@@ -91,7 +91,6 @@ export class SerieService {
   updateSerie(serie: any) {
 
     const url = this.config['serieApi'] + '/' + serie.id;
-    console.log(url);
     this.http.put(url, JSON.stringify(serie), httpOptions)
       .subscribe(
         (responce) => {

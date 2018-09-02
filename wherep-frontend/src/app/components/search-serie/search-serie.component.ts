@@ -28,7 +28,6 @@ export class SearchSerieComponent implements OnInit {
 
     request.subscribe(
       (responce) => {
-        console.log(responce);
         if (responce['Response'] === 'False') {
           alert('No results searching for ' + search);
         } else {
